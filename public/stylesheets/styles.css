@@ -3,6 +3,12 @@ body{
     background:  #b2c9cf;
 }
 
+.container{
+    display: flex;
+    justify-content: space-around
+    
+}
+
 .row {
     padding-bottom: 25px;
 }
@@ -12,4 +18,9 @@ body{
     margin-bottom: 10px; 
     margin-top: 10px; 
     min-height: 430px;
+}
+
+.images{
+    width: 800px; 
+    height: 600px;
 }
