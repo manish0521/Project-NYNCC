@@ -6,8 +6,8 @@ module.exports = {
     getAllmembers: (params) => {
         return new Promise((resolve, reject) => {
             member.find(params)
-                    .then(products => {
-                        resolve(products)
+                    .then(members => {
+                        resolve(members)
                     })
                     .catch( error => {
                         let errors     = {}
@@ -33,13 +33,13 @@ module.exports = {
                     })
         })
     },
-    getproductsByCategoryID: (id) => {
+    getmembersByCategoryID: (id) => {
         return new Promise((resolve, reject) => {
             member.find({category: id})
                     .populate('category')
                     .exec()
-                    .then( products => {
-                        resolve(products)
+                    .then( members => {
+                        resolve(members)
                     })
                     .catch( error => {
                         let errors     = {}
@@ -54,7 +54,7 @@ module.exports = {
         if (req.user) paginate(req, res, next)
         else res.render('index')
     },
-    searchproductByQuery: (req, res) => {
+    searchmemberByQuery: (req, res) => {
         if (req.query.q) {
             member.search({
                 query_string: {

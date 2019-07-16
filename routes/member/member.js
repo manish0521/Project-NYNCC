@@ -38,7 +38,7 @@ router.post('/search', (req, res) => {
     res.redirect('/api/member/search?q=' + req.body.q)
 })
 
-router.get('/search', memberController.searchproductByQuery)
+router.get('/search', memberController.searchmemberByQuery)
 
 router.get('/:id', function (req, res) {
     memberController.getmemberByID(req.params.id)
@@ -52,11 +52,11 @@ router.get('/:id', function (req, res) {
                         })
 })
 
-router.get('/getproductsbycategoryid/:id', function (req, res) {
-    memberController.getproductsByCategoryID(req.params.id)
-                        .then(products => {
-                            res.render('member/products', {
-                                products: products
+router.get('/getmembersbycategoryid/:id', function (req, res) {
+    memberController.getmembersByCategoryID(req.params.id)
+                        .then(members => {
+                            res.render('member/members', {
+                                members: members
                             })
                         })
                         .catch( error => {

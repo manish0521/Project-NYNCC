@@ -7,7 +7,7 @@ module.exports = {
             let newmember = new member()
     
             newmember.category = req.params.categoryID
-            newmember.name     = faker.name.memberName()
+            newmember.name     = faker.name.firstName()
             newmember.price    = faker.commerce.price()
             newmember.image    = faker.image.image()
     
