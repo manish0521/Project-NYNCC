@@ -2,19 +2,19 @@ let member = require('../../member/models/member')
 let faker   = require('faker')
 
 module.exports = {
-    createproductByCategoryID: (req, res) => {
-        for (let i = 0; i < 10; i++) {
-            let newproduct = new member()
+    createMemberByCategoryID: (req, res) => {
+        for (let i = 0; i < 5; i++) {
+            let newmember = new member()
     
-            newproduct.category = req.params.categoryID
-            newproduct.name     = faker.commerce.productName()
-            newproduct.price    = faker.commerce.price()
-            newproduct.image    = faker.image.image()
+            newmember.category = req.params.categoryID
+            newmember.name     = faker.name.memberName()
+            newmember.price    = faker.commerce.price()
+            newmember.image    = faker.image.image()
     
-            newproduct.save()
+            newmember.save()
         }
 
-        req.flash('createproductsSuccess', `Fake ${ req.params.categoryName } 10 products created!`)
+        req.flash('createmembersSuccess', `Fake ${ req.params.categoryName } 5 members created!`)
 
         res.redirect('/api/admin/get-all-teams')
     }

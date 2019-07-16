@@ -32,6 +32,6 @@ router.post('/add-category', categoryValidation, function (req, res) {
 
 router.get('/get-all-teams', categoryController.getAllteams)
 
-router.get('/create-fake-member/:categoryName/:categoryID', createproductController.createproductByCategoryID)
+router.get('/create-fake-member/:categoryName/:categoryID', createproductController.createMemberByCategoryID)
 
 module.exports = router
