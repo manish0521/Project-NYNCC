@@ -1,51 +1,37 @@
-const express = require('express');
-const router = express.Router();
-
-let Category = require('../product/models/Category')
+let express = require('express')
+let router  = express.Router()
 
 let categoryController = require('./controllers/categoryController')
-let categoryValidation = require('../users/utils/categoryValidation')
-let createProductController = require('./controllers/createProductController')
+let createproductController = require('./controllers/createMemberController')
+let categoryValidation = require('./utils/categoryValidation')
 
-let Product = require('../product/models/Product')
+let member = require('../member/models/member')
 
-router.get ('/', function (req, res) {
-    res.send('Admin worked')
+router.get('/', function (req, res) {
+    res.send('Admin Worked')
 })
 
-
-router.get('/add-category', function(req, res) {
-
-    res.render('product/addcategory', {errors:req.flash('addCategoryError'),success:req.flash('addCategorySuccess') })
+router.get('/add-category', function (req, res) {
+    res.render('member/addcategory', { errors:  req.flash('addCategoryError'), 
+                                        success: req.flash('addCategorySuccess') })
 })
 
-router.post('/add-category', categoryValidation, function (req, res ) {
+router.post('/add-category', categoryValidation, function (req, res) {
     categoryController.addCategory(req.body)
-                    
                 .then(category => {
-                    
-                    req.flash('addCategorySuccess', `Added ${category.name}!`)
-                    
+                    req.flash('addCategorySuccess', `Added ${ category.name }!`)
+
                     res.redirect('/api/admin/add-category')
                 })
-                .catch(error =>{
-                    
+                .catch(error => {
                     req.flash('addCategoryError', error.message)
+
                     res.redirect('/api/admin/add-category')
                 })
 })
 
-// create route '/get-all-categories' 
+router.get('/get-all-teams', categoryController.getAllteams)
 
-router.get('/get-all-categories', categoryController.getAllCategories)
-
-
-
-// new route to create-fake-product
-router.get('/create-fake-product/:categoryName/:categoryID', createProductController.createProductByCategoryID)
-
-
-
-    
+router.get('/create-fake-member/:categoryName/:categoryID', createproductController.createproductByCategoryID)
 
 module.exports = router

@@ -1,50 +1,37 @@
-const Category = require('../../product/models/Category')
+let Category = require('../../member/models/Category')
 
 module.exports = {
-    
     addCategory: (params) => {
         return new Promise((resolve, reject) => {
-            const category = new Category()
-
+            let category = new Category()
             category.name = params.name
 
             category.save()
-                    .then(category => {
+                    .then( category => {
                         resolve(category)
-                    })
-                
-
-                    .catch(error => {
+                    } )
+                    .catch( error => {
                         let errors = {}
                         errors.confirmation = false
 
                         if (error.code === 11000) errors.message = 'Category already exists'
-                        else                    error.message = error
+                        else                      errors.message = error
 
                         reject(errors)
-                    })
-    
-            })
-                                        
+                    } )
+        })
     },
-
-//    new method "getAllCategory" which will make a request to MongoDB and render 'create-fake-product' page
-        getAllCategories: (req, res) => {
-            
-            Category.find({})
-                .then(categories => {
-                    res.render('category/create-fake-product', {categories: categories, success:req.flash('createProductsSuccess')})
-
+    getAllteams: (req, res) => {
+        Category.find({})
+                .then( teams => {
+                    res.render('category/create-fake-member', { teams: teams, success: req.flash('createproductsSuccess') })
                 })
-                .catch(error =>{
-                    let errors = {}
-                    errors.status = 500
+                .catch( error => {
+                    let errors     = {}
+                    errors.status  = 500
                     errors.message = error
 
                     res.status(errors.status).json(errors)
                 })
-           
-                                    
-        }
-    
+    }
 }

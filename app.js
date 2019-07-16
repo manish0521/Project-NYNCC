@@ -1,33 +1,25 @@
-var path         = require('path');
-var logger       = require('morgan');
-var express      = require('express');
-var passport     = require('passport');
-var mongoose     = require('mongoose');
-var createError  = require('http-errors');
-var cookieParser = require('cookie-parser');
+let path         = require('path');
+let logger       = require('morgan');
+let express      = require('express');
+let passport     = require('passport');
+let mongoose     = require('mongoose');
+let createError  = require('http-errors');
+let cookieParser = require('cookie-parser');
 
 let methodOverride = require('method-override')
 
-var indexRouter  = require('./routes/index');
-var usersRouter  = require('./routes/users/users');
-let productRouter = require('./routes/product/product');
+let indexRouter   = require('./routes/index');
+let usersRouter   = require('./routes/users/users');
+let adminRouter   = require('./routes/admin/admin');
+let productRouter = require('./routes/member/member');
 
-let adminRouter = require('./routes/admin/admin');
-let cartRouter = require('./routes/cart/cart');
+let flash            = require('connect-flash');
+let session          = require('express-session');
+let expressValidator = require('express-validator');
 
-var flash            = require('connect-flash');
-var session          = require('express-session');
-var expressValidator = require('express-validator');
+let MongoStore = require('connect-mongo')(session);
 
-let cartMiddleware = require('./routes/cart/utils/cartMiddleware');
-
-var MongoStore = require('connect-mongo')(session);
-
-let Category = require('./routes/product/models/Category');
-let Product = require('./routes/product/models/Product')
-// 
-// let mainRoutes = require('./routes/main');
-
+let Category = require('./routes/member/models/Category')
 
 require('dotenv').config();
 
@@ -37,7 +29,7 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true } )
         })
         .catch( err => console.log(`ERROR: ${err}`))
 
-var app = express();
+let app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -48,7 +40,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use(methodOverride('_method'))
 
 app.use(session({
@@ -80,25 +71,22 @@ app.use(function(req, res, next) {
 
 app.use(function (req, res, next) {
     Category.find({})
-        .then(categories => {
-            res.locals.categories = categories
+            .then( teams => {
+                
+                res.locals.teams = teams
 
-            next()
-        })
-        .catch(error =>{
-            return next(error)
-        })
+                next()
+            } )
+            .catch( error => {
+                return next(error)
+            })
 })
-
-app.use(cartMiddleware)
-
-
 
 app.use(expressValidator({
     errorFormatter: function(param, message, value) {
-        var namespace = param.split('.');
-        var root      = namespace.shift();
-        var formParam = root;
+        let namespace = param.split('.');
+        let root      = namespace.shift();
+        let formParam = root;
 
         while (namespace.length) {
             formParam += '[' + namespace.shift() + ']';
@@ -112,12 +100,12 @@ app.use(expressValidator({
     }
 }))
 
-app.use('/', indexRouter);
-app.use('/api/cart', cartRouter);
-app.use('/api/users', usersRouter);
-app.use('/api/admin', adminRouter);
-app.use('/api/product', productRouter);
+app.use('/',            indexRouter);
+app.use('/api/users',   usersRouter);
+app.use('/api/admin',   adminRouter);
+app.use('/api/member', productRouter);
 
+// catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));
 });
@@ -132,7 +120,5 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
-
-
 
 module.exports = app;
