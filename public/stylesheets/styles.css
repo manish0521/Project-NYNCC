@@ -9,13 +9,12 @@ body{
     text-align: center;
     border: #d486b1;
     flex-wrap: wrap;
+
+    text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
 }
 span{
-    color: rgb(214, 27, 27)
-}
-.container > div{
-    
-    border-style: #bd2277
+    color: rgb(214, 27, 27);
+    text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
     
 }
 
@@ -34,4 +33,5 @@ span{
 .images{
     width: 400px; 
     height: 300px;
+    border-style: double;
 }
