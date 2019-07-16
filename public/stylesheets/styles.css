@@ -5,9 +5,20 @@ body{
 
 .container{
     display: flex;
-    justify-content: space-around
+    justify-content: space-around;
+    text-align: center;
+    border: #d486b1;
+    flex-wrap: wrap;
+}
+span{
+    color: rgb(214, 27, 27)
+}
+.container > div{
+    
+    border-style: #bd2277
     
 }
+
 
 .row {
     padding-bottom: 25px;
@@ -21,6 +32,6 @@ body{
 }
 
 .images{
-    width: 800px; 
-    height: 600px;
+    width: 400px; 
+    height: 300px;
 }
