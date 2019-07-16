@@ -6,19 +6,19 @@
     
 </div>
 
-<div class="row" id="productsearchResults">
+<div class="row" id="membersearchResults">
 
-    <% for (let i = 0; i < products.length; i++) { %>
+    <% for (let i = 0; i < members.length; i++) { %>
       <div class="col">      
           <div class="card">
-              <a href="/api/member/getmemberByID/<%= products[i]._id %>"> 
-                <img class="card-img-top" src="<%= products[i].image %>" alt="Card image cap" />
+              <a href="/api/member/getmemberByID/<%= members[i]._id %>"> 
+                <img class="card-img-top" src="<%= members[i].image %>" alt="Card image cap" />
               </a> 
               <div class="card-body">
-                <h5 class="card-title">Name: <%= products[i].name %> </h5>
-                <p class="card-text">Category: <%= products[i].category.name %> </p>
-                <p class="card-text">$ <%= products[i].price %> </p>
-                <a href="/api/member/getmemberByID/<%= products[i]._id %>" class="btn btn-primary">Shop</a>
+                <h5 class="card-title">Name: <%= members[i].name %> </h5>
+                <p class="card-text">Category: <%= members[i].category.name %> </p>
+                <p class="card-text">$ <%= members[i].price %> </p>
+                <a href="/api/member/getmemberByID/<%= members[i]._id %>" class="btn btn-primary">View</a>
               </div>
           </div>
       </div>
