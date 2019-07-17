@@ -1,6 +1,10 @@
 body{
     padding: 50px;
     background:  #b2c9cf;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    
 }
 
 .container{
@@ -9,7 +13,6 @@ body{
     text-align: center;
     border: #d486b1;
     flex-wrap: wrap;
-
     text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
 }
 span{
@@ -17,6 +20,17 @@ span{
     text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
     
 }
+
+div.polaroid {
+    width: 80%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    justify-content: space-evenly;
+   
+  }
+ 
+
 
 
 .row {
@@ -31,7 +45,7 @@ span{
 }
 
 .images{
-    width: 400px; 
-    height: 300px;
+    max-width: 100%;
+    height: auto;
     border-style: double;
 }
