@@ -16,7 +16,7 @@ module.exports = {
            
         User.findOne({email:req.body.email})
         .then(user => {
-            console.log(user)
+
             if (user) {
                req.flash('errors', 'Email already exists')
 
@@ -28,6 +28,10 @@ module.exports = {
                         newUser.profile.name = req.body.name
                         newUser.password = req.body.password
                         newUser.email = req.body.email
+                        newUser.profile.role = req.body.role
+                        newUser.profile.batting = req.body.batting
+                        newUser.profile.bowling = req.body.bowling
+
                         newUser.profile.picture = gravatar(req.body.email)
 
                         bcrypt.genSalt(10, (error, salt) => {
@@ -39,6 +43,7 @@ module.exports = {
 
                                         newUser.save()
                                             .then(user => {
+                                                console.log(user)
                                                 req.logIn(user, (error)=>{
                                                     if (error){
                                                         res.status(400).json({
@@ -47,7 +52,8 @@ module.exports = {
 
                                                         })
                                                     } else {
-                                                        next()
+                                                        // next()
+                                                        res.redirect('/')
                                                     }
                                                 })
                                             })
@@ -74,6 +80,9 @@ module.exports = {
                     if (params.name) user.profile.name = params.name
                     if (params.address)   user.address = params.address
                     if (params.email)       user.email = params.email
+                    if (params.role)        user.role = params.role
+                    if (params.batting)   user.batting = params.batting
+                    if (params.bowling)   user.bowling = params.bowling
 
                     if (params.password ){
 

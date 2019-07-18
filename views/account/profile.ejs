@@ -7,7 +7,7 @@
 
     <% include ../partials/nav %>
 
-    <div class="container emp-profile">
+    <div class="container1 emp-profile">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
@@ -93,10 +93,32 @@
                                 
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Seller</label>
+                                                <label>Role</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Clothes and Whatever</p>
+
+                                                <%= user.profile.role %>
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Batting Style</label>
+                                            </div>
+                                            <div class="col-md-6">
+
+                                                <%= user.profile.batting %>
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Bowling Style</label>
+                                            </div>
+                                            <div class="col-md-6">
+
+                                                <%= user.profile.bowling %>
+
                                             </div>
                                         </div>
                             </div>
