@@ -1,7 +1,9 @@
+
+
 let mongoose = require('mongoose')
 let mongoosastic = require('mongoosastic')
 
-let productschema = new mongoose.Schema({
+let memberSchema = new mongoose.Schema({
     category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'category',
@@ -9,11 +11,10 @@ let productschema = new mongoose.Schema({
         es_include_in_parent: true
     },
     name:  { type: String, es_type: 'text', default: '' },
-    price: { type: Number, es_type: 'long', default: 0 },
     image: { type: String, es_type: 'text', default: '' }
 })
 
-productschema.plugin(mongoosastic, {
+memberSchema.plugin(mongoosastic, {
     hosts: [
         "localhost:9200"
     ],
@@ -24,4 +25,4 @@ productschema.plugin(mongoosastic, {
     ]
 })
 
-module.exports = mongoose.model('member', productschema)
+module.exports = mongoose.model('member', memberSchema)

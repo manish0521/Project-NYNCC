@@ -2,10 +2,12 @@ const express = require('express')
 const router  = express.Router()
 
 let memberController = require('./controllers/memberController')
+console.log('5: ');
 
-let member = require('./models/member')
 
-member.createMapping(function (error, mapping) {
+let Member = require('./models/Member')
+
+Member.createMapping(function (error, mapping) {
     if (error) {
         console.log('Error creating mapping')
         console.log(mapping)
@@ -15,7 +17,7 @@ member.createMapping(function (error, mapping) {
     }
 })
 
-let stream = member.synchronize()
+let stream = Member.synchronize()
 let count  = 0
 
 stream.on('data', function () {
@@ -38,10 +40,10 @@ router.post('/search', (req, res) => {
     res.redirect('/api/member/search?q=' + req.body.q)
 })
 
-router.get('/search', memberController.searchmemberByQuery)
+router.get('/search', memberController.searchMemberByQuery)
 
 router.get('/:id', function (req, res) {
-    memberController.getmemberByID(req.params.id)
+    memberController.getMemberByID(req.params.id)
                         .then( member => {
                             res.render('member/member', {
                                 member: member
@@ -53,7 +55,7 @@ router.get('/:id', function (req, res) {
 })
 
 router.get('/getmembersbycategoryid/:id', function (req, res) {
-    memberController.getmembersByCategoryID(req.params.id)
+    memberController.getMembersByCategoryID(req.params.id)
                         .then(members => {
                             res.render('member/members', {
                                 members: members

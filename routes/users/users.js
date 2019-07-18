@@ -18,35 +18,37 @@ router.get('/signup', function(req, res, next) {
     res.render('auth/signup', { errors: req.flash('errors'), error_msg: null })
 });
 
-router.post('/signup', signupValidation, function (req, res) {
-    let errorValidate = req.validationErrors()
+router.post('/signup', signupValidation, userController.signup)
 
-    if (errorValidate) {
-        res.render('auth/signup', { error_msg: true, errorValidate: errorValidate, errors: [] })
+// router.post('/signup', signupValidation, function (req, res) {
+//     let errorValidate = req.validationErrors()
 
-        return
-    }
+//     if (errorValidate) {
+//         res.render('auth/signup', { error_msg: true, errorValidate: errorValidate, errors: [] })
 
-    userController.signup(req.body)
-                    .then( user => {
-                        req.logIn(user, function (error) {
-                            if (error) {
-                                res.status(400).json({
-                                    confirmation: false,
-                                    message: error
-                                })
-                            } else {
-                                res.redirect('/')
-                            }
-                        })
-                    })
-                    .catch( error => {
-                        // create flash message
-                        req.flash('errors', error.message)
+//         return
+//     }
 
-                        return res.redirect(301, '/api/users/signup')
-                    })
-})
+//     userController.signup(req.body)
+//                     .then( user => {
+//                         req.logIn(user, function (error) {
+//                             if (error) {
+//                                 res.status(400).json({
+//                                     confirmation: false,
+//                                     message: error
+//                                 })
+//                             } else {
+//                                 res.redirect('/')
+//                             }
+//                         })
+//                     })
+//                     .catch( error => {
+//                         // create flash message
+//                         req.flash('errors', error.message)
+
+//                         return res.redirect(301, '/api/users/signup')
+//                     })
+// })
 
 router.get('/signin', function (req, res) {
     if (req.isAuthenticated()) {

@@ -1,11 +1,11 @@
-let member = require('../models/member')
+let Member = require('../models/Member')
 
 let paginate = require('../utils/pagination')
 
 module.exports = {
-    getAllmembers: (params) => {
+    getAllMembers: function (params){
         return new Promise((resolve, reject) => {
-            member.find(params)
+            Member.find(params)
                     .then(members => {
                         resolve(members)
                     })
@@ -18,9 +18,9 @@ module.exports = {
                     })
         })
     },
-    getmemberByID: (id) => {
+    getMemberByID: (id) => {
         return new Promise((resolve, reject) => {
-            member.findById(id)
+            Member.findById(id)
                     .then(member => {
                         resolve(member)
                     })
@@ -33,9 +33,9 @@ module.exports = {
                     })
         })
     },
-    getmembersByCategoryID: (id) => {
+    getMembersByCategoryID: (id) => {
         return new Promise((resolve, reject) => {
-            member.find({category: id})
+            Member.find({category: id})
                     .populate('category')
                     .exec()
                     .then( members => {
@@ -54,9 +54,9 @@ module.exports = {
         if (req.user) paginate(req, res, next)
         else res.render('index')
     },
-    searchmemberByQuery: (req, res) => {
+    searchMemberByQuery: (req, res) => {
         if (req.query.q) {
-            member.search({
+            Member.search({
                 query_string: {
                     query: req.query.q
                 }
@@ -69,6 +69,8 @@ module.exports = {
                     res.status(errors.status).json(errors)
                 } else {
                     let data = results.hits.hits
+
+                        console.log('data: ', data);
                     
                     res.render('search/search-results', {
                         results: data,

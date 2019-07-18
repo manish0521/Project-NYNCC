@@ -6,7 +6,11 @@ let UserSchema = new mongoose.Schema({
     password: { type: String, default: '' },
     profile: {
         name:    { type: String, default: '' },
-        picture: { type: String, default: '' }
+        picture: { type: String, default: '' },
+        role:    { type: String, default: '' },
+        batting: { type: String, default: '' },
+        bowling:    { type: String, default: '' },
+        
     },
     address:   { type: String, default: '' },
     timestamp: { type: String, default: () => moment().format('dddd, MMMM Do YYYY, h:mm:ss a') }

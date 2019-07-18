@@ -1,4 +1,4 @@
-let member = require('../models/member')
+let member = require('../models/Member')
 
 function paginate(req, res) {
     let perPage = 9
@@ -10,10 +10,10 @@ function paginate(req, res) {
         .limit(perPage)
         .populate('category')
         .exec()
-        .then( products => {
-            return products
+        .then( members => {
+            return members
         })
-        .then( products => {
+        .then( members => {
             member
                 .count()
                 .exec()
@@ -22,11 +22,12 @@ function paginate(req, res) {
                     console.log(`pages: `, Math.ceil(count / perPage));
                     
                     res.render('member/member-main', {
-                        products: products,
+                        members: members,
                         pages: Math.ceil(count / perPage),
                         current:      page,
                         nextPage:     page + 1,
                         previousPage: page - 1
+                        
                     })
                 })
                 .catch( error => {

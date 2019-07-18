@@ -2,10 +2,10 @@ let express = require('express')
 let router  = express.Router()
 
 let categoryController = require('./controllers/categoryController')
-let creatememberController = require('./controllers/createMemberController')
+let createMemberController = require('./controllers/createMemberController')
 let categoryValidation = require('./utils/categoryValidation')
 
-let member = require('../member/models/member')
+let Member = require('../member/models/Member')
 
 router.get('/', function (req, res) {
     res.send('Admin Worked')
@@ -32,6 +32,6 @@ router.post('/add-category', categoryValidation, function (req, res) {
 
 router.get('/get-all-teams', categoryController.getAllteams)
 
-router.get('/create-fake-member/:categoryName/:categoryID', creatememberController.createMemberByCategoryID)
+router.get('/create-fake-member/:categoryName/:categoryID', createMemberController.createMemberByCategoryID)
 
 module.exports = router

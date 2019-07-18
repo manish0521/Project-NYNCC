@@ -1,4 +1,4 @@
-let member = require('../../member/models/member')
+let member = require('../../member/models/Member')
 let faker   = require('faker')
 
 module.exports = {
