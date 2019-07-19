@@ -21,4 +21,13 @@ router.get('/management', function (req, res) {
     res.render('management')
 })
 
+router.get('/playersList', function (req, res) {
+    res.render('playersList')
+})
+
+router.get('/finances', function (req, res) {
+    res.render('finances')
+})
+
+
 module.exports = router;
