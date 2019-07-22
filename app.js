@@ -15,6 +15,7 @@ let memberRouter = require('./routes/member/member');
 
 
 
+
 let flash            = require('connect-flash');
 let session          = require('express-session');
 let expressValidator = require('express-validator');
@@ -106,6 +107,7 @@ app.use('/',            indexRouter);
 app.use('/api/users',   usersRouter);
 app.use('/api/admin',   adminRouter);
 app.use('/api/member', memberRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,6 +1,7 @@
 let Member = require('../models/Member')
 
 let paginate = require('../utils/pagination')
+let paginateList = require('../utils/playerList')
 
 module.exports = {
     getAllMembers: function (params){
@@ -54,6 +55,12 @@ module.exports = {
         if (req.user) paginate(req, res, next)
         else res.render('index')
     },
+
+    getPlayersList:(req, res, next) => {
+        if (true) return paginateList(req, res, next)
+        else res.render('index')
+    },
+
     searchMemberByQuery: (req, res) => {
         if (req.query.q) {
             Member.search({

@@ -3,6 +3,7 @@ var router = express.Router();
 
 let memberController = require('./member/controllers/memberController')
 let paginate = require('./member/utils/pagination')
+let paginateList = require('./member/utils/playerList')
 
 /* GET home page. */
 router.get('/', memberController.getPageIfUserLoggedIn);
@@ -21,8 +22,8 @@ router.get('/management', function (req, res) {
     res.render('management')
 })
 
-router.get('/playersList', function (req, res) {
-    res.render('playersList')
+router.get('/players-list', function (req, res) {
+    res.render('playersList', memberController.paginateList)
 })
 
 router.get('/finances', function (req, res) {
