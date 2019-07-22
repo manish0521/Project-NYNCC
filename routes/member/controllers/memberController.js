@@ -57,8 +57,7 @@ module.exports = {
     },
 
     getPlayersList:(req, res, next) => {
-        if (true) return paginateList(req, res, next)
-        else res.render('index')
+         paginateList(req, res, next)
     },
 
     searchMemberByQuery: (req, res) => {

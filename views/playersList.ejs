@@ -7,7 +7,21 @@
 
     <body class="pt-4 my-md-5 pt-md-5 border-top">
 
-      players
+      <% for (let i = 0; i < members.length; i++) { %>
+      <div class="col">      
+          <div class="card">
+              <a href="/api/member/<%= members[i]._id %>"> 
+                <img class="card-img-top" src="<%= members[i].image %>" alt="Card image cap" />
+              </a> 
+              <div class="card-body">
+                <h5 class="card-title">Name: <%= members[i].name %> </h5>
+                <p class="card-text">Category: <%= members[i].category.name %> </p>
+                <p class="card-text">$ <%= members[i].price %> </p>
+                <a href="/api/member/<%= members[i]._id %>" class="btn btn-primary">View</a>
+              </div>
+          </div>
+      </div>
+      <% } %>
     
     </body>
   

@@ -22,7 +22,7 @@ function paginateList(req, res) {
                     console.log(`count: `, count);
                     console.log(`pages: `, Math.ceil(count / perPage));
                     
-                    res.render('member/member-main', {
+                    res.render('playersList', {
                         members: members,
                         pages: Math.ceil(count / perPage),
                         current:      page,

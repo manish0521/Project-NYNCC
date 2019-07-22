@@ -21,7 +21,8 @@ function paginate(req, res) {
                     console.log(`count: `, count);
                     console.log(`pages: `, Math.ceil(count / perPage));
                     
-                    res.render('member/member-main', {
+                    // if used 'member/member-main' insted of index then it will skip home page and show only members
+                    res.render('index', {
                         members: members,
                         pages: Math.ceil(count / perPage),
                         current:      page,

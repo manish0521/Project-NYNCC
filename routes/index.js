@@ -22,9 +22,9 @@ router.get('/management', function (req, res) {
     res.render('management')
 })
 
-router.get('/players-list', function (req, res) {
-    res.render('playersList', memberController.paginateList)
-})
+router.get('/players-list',  memberController.getPlayersList)
+
+router.get('/players-list', paginateList);
 
 router.get('/finances', function (req, res) {
     res.render('finances')
