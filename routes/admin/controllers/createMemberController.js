@@ -1,14 +1,14 @@
-let member = require('../../member/models/Member')
+let Member = require('../../member/models/Member')
 let faker   = require('faker')
 
 module.exports = {
     createMemberByCategoryID: (req, res) => {
         for (let i = 0; i < 5; i++) {
-            let newmember = new member()
+            let newmember = new Member()
     
             newmember.category = req.params.categoryID
             newmember.name     = faker.name.firstName()
-            newmember.price    = faker.commerce.price()
+            // newmember.name     = 'David'
             newmember.image    = faker.image.image()
     
             newmember.save()

@@ -2,7 +2,7 @@ let member = require('../models/Member')
 
 
 function paginateList(req, res) {
-    let perPage = 20
+    let perPage = 10
     let page    = req.params.page
     
     member

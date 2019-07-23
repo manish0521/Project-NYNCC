@@ -4,12 +4,15 @@
     <% include ../partials/head %>
 
  <body>
+ <% include ../partials/nav %>
        <div class="row">
            <div class="col">
                <img src="<%= member.image %>" />
            </div>
            <div class="col">
                <h1>Name: <%= member.name %></h1>
+               <h1>Role: <a href='https://www.google.com'> Click me!</a> </h1>
+               
                
            </div>
        </div>

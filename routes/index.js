@@ -8,7 +8,7 @@ let paginateList = require('./member/utils/playerList')
 /* GET home page. */
 router.get('/', memberController.getPageIfUserLoggedIn);
 
-router.get('/page/:page', paginate);
+// router.get('/page/:page', paginate);
 
 router.get('/coach', function (req, res) {
     res.render('coach')
@@ -22,9 +22,9 @@ router.get('/management', function (req, res) {
     res.render('management')
 })
 
-router.get('/players-list',  memberController.getPlayersList)
+router.get('/players-list',  memberController.getMembersList);
 
-router.get('/players-list', paginateList);
+router.get('/page/:page', paginateList);
 
 router.get('/finances', function (req, res) {
     res.render('finances')

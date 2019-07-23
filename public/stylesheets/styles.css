@@ -16,7 +16,7 @@ body{
     text-align: center;
     border: #d486b1;
     flex-wrap: wrap;
-    text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
+    /* text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue; */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 span{
@@ -33,7 +33,8 @@ div.polaroid {
     width: 95%;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
+    /* text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue; */
+    font-weight: bold;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -46,14 +47,33 @@ div.polaroid {
 
 
 .row {
-    padding-bottom: 25px;
+    padding-bottom: 15px;
+    
 }
+.col {
+    padding-top: 50px;
+   
+   
+}
+#paginate {
+    widows: 100%;
+    padding-top: 20px;
+    align-content: center;
+    display: flex;
+    justify-content: space-evenly;
+
+    flex-wrap: wrap;
+    
+  
+}
+
 
 .card {
     width: 18rem; 
     margin-bottom: 10px; 
     margin-top: 10px; 
     min-height: 430px;
+    
 }
 
 .images{

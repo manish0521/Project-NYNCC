@@ -56,7 +56,7 @@ module.exports = {
         else res.render('index')
     },
 
-    getPlayersList:(req, res, next) => {
+    getMembersList:(req, res, next) => {
          paginateList(req, res, next)
     },
 

@@ -7,6 +7,7 @@ let UserSchema = new mongoose.Schema({
     profile: {
         name:    { type: String, default: '' },
         picture: { type: String, default: '' },
+        category:    { type: String, default: '' },
         role:    { type: String, default: '' },
         batting: { type: String, default: '' },
         bowling:    { type: String, default: '' },

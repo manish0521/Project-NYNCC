@@ -1,9 +1,11 @@
 <!doctype html>
+<% include ../partials/nav %>
 <html lang="en">
 
   <% include ../partials/account %>
 
   <body class="text-center">
+  
     <form class="form-signin" method="POST" action="/api/users/signup">
 
         <% if (errors.length > 0) { %>
