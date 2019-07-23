@@ -10,6 +10,14 @@ router.get('/', memberController.getPageIfUserLoggedIn);
 
 // router.get('/page/:page', paginate);
 
+router.get('/about', function (req, res) {
+    res.render('about')
+})
+
+router.get('/gallary', function (req, res) {
+    res.render('gallary')
+})
+
 router.get('/coach', function (req, res) {
     res.render('coach')
 })
