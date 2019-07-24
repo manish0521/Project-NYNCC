@@ -16,7 +16,7 @@ let memberSchema = new mongoose.Schema({
 
 memberSchema.plugin(mongoosastic, {
     hosts: [
-        "localhost:9200"
+        "https://s1vhvr390m:gd7q5b09mm@rowan-123573979.us-east-1.bonsaisearch.net:443"
     ],
     populate: [
         {
