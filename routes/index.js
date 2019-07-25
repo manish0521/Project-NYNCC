@@ -5,6 +5,9 @@ let memberController = require('./member/controllers/memberController')
 let paginate = require('./member/utils/pagination')
 let paginateList = require('./member/utils/playerList')
 
+let paginateUserList = require('./member/utils/playerList')
+let userController = require('./users/controllers/userController')
+
 /* GET home page. */
 router.get('/', memberController.getPageIfUserLoggedIn);
 
@@ -30,9 +33,12 @@ router.get('/management', function (req, res) {
     res.render('management')
 })
 
-router.get('/players-list',  memberController.getMembersList);
+// router.get('/players-list',  memberController.getMembersList);
+router.get('/users-list', userController.getUsersList);
 
-router.get('/page/:page', paginateList);
+
+// router.get('/page/:page', paginateList);
+router.get('/page/:page', paginateUserList);
 
 router.get('/finances', function (req, res) {
     res.render('finances')

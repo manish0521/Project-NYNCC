@@ -16,18 +16,19 @@
 
 
     <div id='paginate'>
-      <% for (let i = 0; i < members.length; i++) { %>
+      <% for (let i = 0; i < users.length; i++) { %>
         
           <div class="card">
 
-              <a href="/api/member/<%= members[i]._id %>"> 
-                <img class="card-img-top" src="<%= members[i].image %>" alt="Card image cap" />
+              <a href="/api/users/<%= users[i]._id %>"> 
+                <img class="card-img-top" src="<%= users[i].profile.picture %>" alt="Card image cap" />
               </a> 
               <div class="card-body">
-                <h5 class="card-title">Name: <%= members[i].name %> </h5>
-                <p class="card-text">Category: <%= members[i].category.name %> </p>
-                <p class="card-text"><%= members[i].role %> </p>
-                <a href="/api/member/<%= members[i]._id %>" class="btn btn-primary">View</a>
+                <h5 class="card-title">Name: <%= users[i].profile.name %> </h5>
+             <p class="card-text">Category: <%= users[i].profile.category %> </p>
+                
+
+                <a href="/api/users/<%= users[i]._id %>" class="btn btn-primary">View</a>
             </div>
         </div>
       

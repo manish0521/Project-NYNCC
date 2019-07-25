@@ -1,0 +1,24 @@
+<!doctype html>
+
+<html lang="en">
+
+    <% include ../partials/head %>
+
+ <body>
+ <% include ../partials/nav %>
+       <div class="row">
+           <div class="col ">
+               <img src="<%= user.profile.picture %>" width='400px' height='auto' />
+           </div>
+           <div class="col" >
+               <h1>Name: <%= user.profile.name %></h1>
+               <p class="card-text">Category: <%= user.profile.category %> </p>
+                <p class="card-text">Role: <%= user.profile.role %> </p>
+                <p class="card-text">Batting Style: <%= user.profile.batting %> </p>
+                <p class="card-text">Bowling Style: <%= user.profile.bowling %> </p> 
+           </div>
+           
+       </div>
+       <iframe src="https://www.cricclubs.com/RoyalPremierLeagueNewYork/viewPlayer.do?playerId=608762&clubId=7058" witdh='600px' height='600px'>
+ </body>
+</html>

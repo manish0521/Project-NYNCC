@@ -21,6 +21,7 @@ memberSchema.plugin(mongoosastic, {
     populate: [
         {
             path: 'category'
+            
         }
     ]
 })

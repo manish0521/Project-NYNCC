@@ -61,4 +61,16 @@ router.put('/edit-profile', function (req, res) {
                     })
 })
 
+router.get('/:id', function (req, res) {
+    userController.getUserByID(req.params.id)
+                        .then( user => {
+                            res.render('user/user', {
+                                user: user
+                            })
+                        })
+                        .catch( error => {
+                            res.status(error.status).json(error)
+                        })
+})
+
 module.exports = router;

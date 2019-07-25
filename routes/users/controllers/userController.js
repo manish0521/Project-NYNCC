@@ -1,6 +1,7 @@
 const User   = require('../models/User')
 const bcrypt = require('bcryptjs')
 const gravatar = require('../utils/gravatar')
+let paginateUserList = require('../utils/userList')
 
 module.exports = {
     signup: function (req, res, next){
@@ -135,5 +136,40 @@ module.exports = {
                     }
                 })
         })
-    }
+    },
+    getAllUsers: function (params){
+        return new Promise((resolve, reject) => {
+            User.find(params)
+                    .then(users => {
+                        resolve(users)
+                    })
+                    .catch( error => {
+                        let errors     = {}
+                        errors.status  = 500
+                        errors.message = error
+
+                        reject(errors)
+                    })
+        })
+    },
+
+    getUserByID: (id) => {
+        return new Promise((resolve, reject) => {
+            User.findById(id)
+                    .then(user => {
+                        resolve(user)
+                    })
+                    .catch( error => {
+                        let errors     = {}
+                        errors.status  = 500
+                        errors.message = error
+
+                        reject(errors)
+                    })
+        })
+    },
+
+    getUsersList:(req, res, next) => {
+        paginateUserList(req, res, next)
+   },
 }

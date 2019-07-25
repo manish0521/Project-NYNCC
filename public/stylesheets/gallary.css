@@ -44,7 +44,7 @@ img {vertical-align: middle;}
 /* Caption text */
 .text {
   background-color: white;
-  color: greenyellow;
+  color: rgb(255, 106, 47);
   font-weight: bolder;
   font-size: 16px;
   padding: 8px 12px;
